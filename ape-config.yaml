@@ -1,0 +1,9 @@
+geth:
+  ethereum:
+    mainnet:
+      uri: http://erigon.dappnode:8545
+
+plugins:
+  - name: ens
+  - name: etherscan
+  - name: addressbook
