@@ -98,15 +98,14 @@ method_inputs = {
 }
 
 
-def parse_method_input(mi):
-    if mi["type"] == "tuple[]":
-        return [tuple([parse_method_input(c) for c in mi["components"]])]
-    elif mi["type"] == "tuple":
-        return tuple([parse_method_input(c) for c in mi["components"]])
-    elif mi["type"].endswith("]"):
-        return [mi["type"][:-2]]
+def parse_type(t):
+    if t["type"] == "tuple[]":
+        return [tuple([parse_type(c) for c in t["components"]])]
+    elif t["type"] == "tuple":
+        return tuple([parse_type(c) for c in t["components"]])
+    elif t["type"].endswith("]"):
+        return [t["type"][:-2]]
     else:
-        return mi["type"]
+        return t["type"]
 
-
-print(parse_method_input(method_inputs))
+print(parse_type(method_inputs))
